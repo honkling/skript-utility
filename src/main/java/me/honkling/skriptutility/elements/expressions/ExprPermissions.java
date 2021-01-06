@@ -22,7 +22,7 @@ import java.util.Set;
 public class ExprPermissions extends SimpleExpression<String> {
 
     static {
-        Skript.registerExpression(ExprPermissions.class, String.class, ExpressionType.COMBINED, "[the] perm[ission]s of %player%");
+        Skript.registerExpression(ExprPermissions.class, String.class, ExpressionType.COMBINED, "[the] perm[ission]s of %player%", "%player%['s] perm[ission]s");
     }
 
     private Expression<Player> player;
@@ -82,8 +82,7 @@ public class ExprPermissions extends SimpleExpression<String> {
                     perms.playerRemove(p, perm);
                 }
             } else if(mode == ChangeMode.REMOVE_ALL) {
-                perms.playerRemove(p, "*")
-                ;
+                perms.playerRemove(p, "*");
             }
         }
     }
