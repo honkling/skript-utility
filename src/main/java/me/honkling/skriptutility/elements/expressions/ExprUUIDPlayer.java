@@ -17,7 +17,7 @@ import static org.bukkit.Bukkit.getPlayer;
 public class ExprUUIDPlayer extends SimpleExpression<Player> {
 
     static {
-        Skript.registerExpression(ExprUUIDPlayer.class, Player.class, ExpressionType.COMBINED, "[the] player from [UUID] %string% ");
+        Skript.registerExpression(ExprUUIDPlayer.class, Player.class, ExpressionType.COMBINED, "[the] player from [UUID] %string%");
     }
 
     private Expression<String> uuid;

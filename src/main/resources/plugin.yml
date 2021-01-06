@@ -5,5 +5,6 @@ api-version: 1.16
 prefix: skript-utility
 load: STARTUP
 depend: [ Skript ]
+softdepend: [ Vault ]
 authors: [ honkling ]
 description: A Skript Addon that provides extra syntax to make your experience more enjoyable.
