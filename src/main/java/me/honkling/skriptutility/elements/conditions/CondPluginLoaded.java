@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class CondPluginLoaded extends Condition {
 
     static {
-        Skript.registerCondition(CondPluginLoaded.class, "%plugins% (1¦(is|are)|2¦(is(n't| not)|are(n't| not)) unloaded");
+        Skript.registerCondition(CondPluginLoaded.class, "%plugins% (1¦(is|are)|2¦(is(n't| not)|are(n't| not)) loaded");
     }
 
     Expression<Plugin> plugin;

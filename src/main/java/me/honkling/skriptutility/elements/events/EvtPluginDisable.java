@@ -4,6 +4,8 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Literal;
 import ch.njol.skript.lang.SkriptEvent;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
+import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Getter;
 import ch.njol.util.Checker;
 import jdk.internal.jline.internal.Nullable;
 import org.bukkit.event.Event;
@@ -14,6 +16,12 @@ public class EvtPluginDisable extends SkriptEvent {
 
     static {
         Skript.registerEvent("On Plugin Disable", EvtPluginDisable.class, PluginDisableEvent.class, "[on] [plugin] disable [of %plugin%]");
+        EventValues.registerEventValue(PluginDisableEvent.class, Plugin.class, new Getter<Plugin, PluginDisableEvent>() {
+            @Nullable
+            public Plugin get(PluginDisableEvent event) {
+                return event.getPlugin();
+            }
+        }, 0);
     }
 
     Literal<Plugin> plugins;

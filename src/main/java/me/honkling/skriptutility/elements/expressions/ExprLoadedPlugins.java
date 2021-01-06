@@ -56,10 +56,9 @@ public class ExprLoadedPlugins extends SimpleExpression<Plugin> {
         return manager.getPlugins();
     }
 
-    public void change(Event event, String[] delta, ChangeMode mode) {
+    public void change(Event event, Plugin[] delta, ChangeMode mode) {
         if(mode == ChangeMode.ADD) {
-            for (String name : delta) {
-                Plugin plugin = manager.getPlugin(name);
+            for (Plugin plugin : delta) {
                 if (plugin == null || plugin.isEnabled()) continue;
                 File file = new File(plugin.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
                 try {
@@ -69,8 +68,7 @@ public class ExprLoadedPlugins extends SimpleExpression<Plugin> {
                 }
             }
         } else if(mode == ChangeMode.REMOVE) {
-            for (String name: delta) {
-                Plugin plugin = manager.getPlugin(name);
+            for (Plugin plugin: delta) {
                 if(plugin == null || !plugin.isEnabled()) continue;
                 manager.disablePlugin(plugin);
             }
@@ -80,8 +78,7 @@ public class ExprLoadedPlugins extends SimpleExpression<Plugin> {
             manager.disablePlugins();
         } else if(mode == ChangeMode.SET) {
             manager.disablePlugins();
-            for (String name : delta) {
-                Plugin plugin = manager.getPlugin(name);
+            for (Plugin plugin : delta) {
                 if(plugin == null) continue;
                 File file = new File(plugin.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
                 try {
